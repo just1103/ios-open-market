@@ -1,58 +1,63 @@
 # 오픈 마켓 프로젝트
 ## 프로젝트 소개
-- STEP 3/4 확인 후 작성 예정
+- 네트워크 통신으로 상품 목록화면 / 상세화면 / 등록화면을 나타냅니다.
+- Architecture : MVC
+- Deployment Target : iOS 13.2
+- 팀원 (iOS 개발) : [허황](https://github.com/HJEHA), [애플사이다](https://github.com/just1103)
+- 진행 기간 : 2022.01.03 ~ 2022.01.31
+- 관련 Pull Requeset : [STEP1](https://github.com/yagom-academy/ios-open-market/pull/84) / [STEP2](https://github.com/yagom-academy/ios-open-market/pull/96) / [STEP3](https://github.com/yagom-academy/ios-open-market/pull/114) / [STEP4](https://github.com/yagom-academy/ios-open-market/pull/131)
+
+## 주요 화면 및 기능
+### 🛍️ 상품 목록화면
+
+> * 목록 최상단에서 위로 Scroll하면 상품 목록을 업데이트해요.  
+> * 상단 `SegmentedControl`로 보기 모드를 List (목록형) 또는 Grid (격자형)로 바꿀 수 있어요.  
+> * 데이터 로딩 시 `Acticity Indicator`를 나타냅니다.  
+> * 새로운 상품이 추가되면 상단에 버튼을 띄워 알려줍니다.
+
+|목록 업데이트|List-Grid 전환|신상품 등록 알림|무한 Scroll|
+|-|-|-|-|
+|<img width="180" src="https://user-images.githubusercontent.com/70856586/189278678-8d333322-43b3-4409-8405-5738cd062655.gif">|<img width="180" src="https://user-images.githubusercontent.com/70856586/189278403-f49ac43c-ee21-4cfd-a39e-e5f47aa6d815.gif">|<img width="180" src="https://user-images.githubusercontent.com/70856586/189279165-6999c4e2-013f-47ef-98ea-525429370620.gif">
+||
+
+### 🛍️ 상품 상세화면
+> * 목록화면의 상품을 탭하면 상세화면을 나타냅니다.  
+> * 이미지를 좌우로 Scroll해서 확인해요.
+> * 우상단 버튼으로 해당 상품을 수정/삭제할 수 있어요.  
+
+|상세 화면|
+|-|
+|<img width="180" src="https://user-images.githubusercontent.com/70856586/189276763-b96e1498-6b6b-45f6-a9c6-d3d857ab7753.gif">|
+
+### 🛍️ 상품 등록화면
+> * `+ 버튼`으로 이미지를 추가하고, 이미지 우상단의 `- 버튼`으로 이미지를 삭제해요.  
+> * 이미지 크기가 큰 경우 300KB로 축소하여 등록합니다.  
+> * 입력값이 적절한지 검증하고 필요 시 `Alert`를 나타내요.  
+> * `TextView` 입력 텍스트가 키보드 뒤로 숨겨지지 않도록 처리했어요.  
+
+|이미지 추가|이미지 수정/삭제|상품 등록 실패|상품 등록 성공|키보드 입력 처리|
+|-|-|-|-|-|
+|<img width="180" src="https://i.imgur.com/KsqBnFP.gif">|<img width="180" src="https://i.imgur.com/QoqzYq6.gif">|<img width="180" src="https://i.imgur.com/pcxnzgE.gif">|<img width="180" src="https://i.imgur.com/k1mBXL0.gif">|<img width="180" src="https://i.imgur.com/0Llsy78.gif">|
 
 ## 목차
 - [STEP1 : 모델/네트워킹 타입 구현](##STEP1-모델/네트워킹-타입-구현)
     + [키워드](#1-1-키워드)
     + [구현 내용](#1-2-구현-내용)
-    + [고민한 점](#1-3-고민한-점)
-    + [Trouble Shooting](#1-4-Trouble-Shooting)
-    + [피드백 반영](#1-5-피드백-반영)
+    + [Trouble Shooting](#1-3-trouble-shooting)
 
 ## STEP1 모델/네트워킹 타입 구현
 ### 1-1 키워드
-* 네트워크 : URLSession, HTTP Request/Response, 서버 API 문서
-* 비동기 작업 : completionHandler, escaping closure
+* 네트워크 : URLSession, HTTP Request/Response, 서버 API
+* 비동기 작업 : completionHandler, escaping closure, Result
 * Unit Test : Mock Data/Mock URLSession, XCTestExpectation
-* 라이브러리 : Swift Lint, CocoaPods
+* 라이브러리 : SwiftLint, CocoaPods
 * JSON : Decoding, CodingKey, convertFromSnakeCase
 
 ### 1-2 구현 내용
 Parsing한 JSON 데이터를 Mapping할 Model 타입을 설계했습니다. 그리고 서버와 통신하기 위해 URLSession을 활용했습니다. Mock Data 및 Mock URLSession을 통해 이에 대한 Unit Test를 진행했습니다.
 
-**프로젝트 구조**
-- Extension
-    - URLRequest+Extension : URL을 만들 때 HttpMethod까지 지정할 수 있도록 init() 추가
-    - URLSession+Extension : 네트워크 없이 테스트를 진행하기 위한 URLSessionProtocol을 정의하고 URLSession 확장하여 채택함.
-- Utility
-    - JSONParser : JSON 데이터를 사용자 정의 타입으로 decode하기 위한 구조체 타입
-    - NetworkDataTransfer : 서버와 데이터 통신을 하기 위한 구조체 타입
-- Model
-    - Product : 상품 상세 정보를 담는 모델 타입
-    - Currency : 상품 통화(나라별 화폐 단위) 정보를 담는 열거형 타입
-    - Image : 상품의 이미지 정보를 담는 모델 타입
-    - Vendor : 판매자 정보를 담는 모델 타입
-    - ProductPage : 상품 페이지 정보를 담는 모델 타입
-    - OpenMarketURL : OpenMarket 프로젝트에서 사용하는 URL를 관리하는 네임스페이스
-- Unit Test 
-    - MockProduct.json / MockProductPage.json : 가짜 상품/페이지 정보 관련 json 데이터
-    - MockURLSession : 네트워크 없이 테스트를 진행하기 위한 MockURLSession 타입. URLSessionProtocol 채택
-    - JSONParserTests :  JSONParser 타입을 테스트 하기 위한 테스트 코드. 가짜 json 데이터를 사용함.
-    - NetworkDataTransferTests : 서버와 통신을 하기 위한 테스트 코드. 네트워크 통신 없이 MockURLSession을 활용한 테스트 진행
-
-### 1-3 고민한 점
-**1. `convertFromSnakeCase` 및 `CodingKeys` 사용**
-convertFromSnakeCase를 사용하여 JSON Data의 SnakeCase로 된 parameter 이름을 Swift에서 CamelCase로 사용하도록 했습니다. 이때 convertFromSnakeCase가 처리할 수 없는 부분이 있었는데, 예를 들어 `page_no`는 Swift로 변환했을 때 `pageNo`이 아니라 `pageNumber`이 되어야 하므로 `CodingKey`를 함께 적용했습니다.
- 
-**2. Unit Test를 위해 `JSON 파일` 및 `MockURLSession` 사용**
-Swift 파일에 JSON String을 넣는 방법도 가능하지만, 향후 테스트할 대상 파일이 늘어날 것에 대비하여 JSON 파일 자체를 만들고 `Bundle.main.path`를 활용하여 데이터에 접근하는 방법을 사용했습니다.
-
-`URLSessionProtocol`, `MockURLSession`을 이용한 네트워크 테스트를 진행했습니다. `MockURLSession`을 구현한 이유는 `MockURLSession` 없이 실제 서버와 통신하면 테스트의 속도가 느려지며, 인터넷 연결상태에 따라 테스트 결과가 달라지므로 테스트 결과를 신뢰할 수 없기 때문입니다. 또한 실제 서버와 통신하면 의도치 않게 서버에 테스트 데이터를 업로드 하는 등 side-effect가 발생할 수 있습니다. 
-
-### 1-4 Trouble Shooting
+### 1-3 Trouble Shooting
 **서버 데이터를 비동기로 Load하는 방법**
-
 Trouble Shooting 과정은 아래 순서로 진행했습니다.
 1) semaphore 사용 전
     - URLSession이 데이터 Loading 작업을 비동기로 처리하므로 `getHealthChecker` 메서드의 반환값 반영이 안되는 문제가 발생했습니다. 이를 해결하기 위해 semaphore를 활용해 반환 값을 받기 전까지 다른 스레드의 접근을 차단하는 방식을 사용했습니다.
@@ -302,37 +307,7 @@ func test_Product타입_decode했을때_Nil이_아닌지_테스트() {
    
 ### 2-2 구현 내용
 API 서버에 요청한 상품 목록 데이터를 받아서 화면을 구성했습니다. 상품 보기 모드를 List (목록형) 또는 Grid (격자형)로 변경할 수 있고, 상품명, (할인)가격, 썸네일 이미지 등의 상품 정보를 확인 가능합니다. Acticity Indicator를 통해 사용자는 데이터가 Loading 중임을 알 수 있습니다.
-   
-**OpenMarket 프로젝트 구조**
-+ Protocol
-    + BaseURLProtocol : baseURL을 가지는 프로토콜
-    + APIProtocol : Requset보낼 URL과 HttpMethod를 가지는 프로토콜
-    + ProductCellProtocol : List/Grid 형태의 ProductCell이 가져야 하는 메서드를 정의한 프로토콜. UICollectionViewCell을 상속받음.
-+ Extension
-    + URLRequest+Extension : URL을 만들 때 HttpMethod까지 지정할 수 있도록 init() 추가
-    + URLSession+Extension : 네트워크 없이 테스트를 진행하기 위한 URLSessionProtocol을 정의하고 URLSession 확장하여 채택함.
-    + UILabel+Extension : 취소선이 적용된 NSAttributedString으로 반환하는 메서드 확장
-    + Int+Extension : Int 타입의 천자리 단위마다 ,를 넣어주는 메서드 확장
-    + CALayer+Extension : Layer에 borderLine을 설정할 수 있는 메서드 확장
-+ Utility
-    + JSONParser : JSON 데이터를 사용자 정의 타입으로 decode하기 위한 구조체 타입
-    + NetworkDataTransfer : 서버와 데이터 통신을 하기 위한 구조체 타입
-+ Model
-    + OpenMarketURL : OpenMarket 프로젝트에서 사용하는 URL별 구조체들을 담는 파일
-+ View
-    + ViewTypeSegmentedControl : 오픈 마켓 디자인을 반영한 Custom SegmentedControl View
-    + GridProductCell : 그리드 형식의 Custom ProductCell View. ProductCell 프로토콜 채택
-    + ListProductCell : 리스트 형식의 Custom ProductCell View. ProductCell 프로토콜 채택
-+ Controller
-    + OpenMarketViewController : 오픈 마켓 프로젝트의 메인화면을 관리하는 ViewController
-        + Collection View : 서버에서 받아온 상품 정보를 ListProductCell, GridProductCell 두 가지 형태의 Cell로 보여줌.
-            + cellForItemAt 메서드 내부에서 GCD를 사용하여 Cell를 원할하게 가져올 수 있도록 처리함.
-            + UICollectionViewDataSource, CollectionViewDelegateFlowLayout 프로토콜 채택
-            + Segmented Control의 선택된 세그먼트에 따라서 Cell의 크기에 맞춰 레이아웃을 유동적으로 변환해줌.
-        + Segmented Control : 선택된 세그먼트에 따라 Collection View의 형식을 변환해줌.
-        + Activity Indicator : 데이터가 로드 중임을 알리는 UI요소
-    + AddProductViewController : 상품 등록 화면을 관리하는 ViewController. STEP 3 이후 진행 예정
-   
+
 ### 2-3 고민한 점 
 **1. List(목록형), Grid(격자형) 두가지 형태의 Cell을 대응하는 방법**   
 여러 가지 방법을 찾아봤습니다.
@@ -435,65 +410,3 @@ func fadeOut(withDuration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = n
     }, completion: completion)
 }
 ```   
-### 2-5 피드백 반영!
-
-**1. Data fetching 메서드의 확장성 개선**   
-ViewController의 `fetchProductData` 메서드의 확장성 개선하기 위해 매개변수로 api, decoding model 타입, completion handler를 전달받도록 수정했습니다. 또한 Data fetching의 주체를 NetworkDataTransfer 타입으로 변경하여 단일책임역할을 준수하도록 했습니다.
-```swift
-// 개선 전 - ViewController
-private func fetchProductData() {
-    NetworkDataTransfer().request(api: ProductPageAPI(pageNumber: 1, itemsPerPage: 100)) { [weak self] result in
-        switch result {
-        case .success(let data):
-            let decodedData = JSONParser<ProductPage>().decode(from: data)
-
-            switch decodedData {
-            case .success(let data):
-                self?.products = data.products
-                DispatchQueue.main.async {
-                    self?.reloadDataWithActivityIndicator(at: self?.productCollectionView)
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-
-        case .failure(let error):
-            print(error.localizedDescription)
-        }
-    }
-}
-
-// 개선 후 
-// ViewController
-private func setupProducts() {
-    NetworkDataTransfer().fetchData(api: ProductPageAPI(pageNumber: 1, itemsPerPage: 100),  // fetchData 메서드 호출
-              decodingType: ProductPage.self) { [weak self] data in
-        self?.products = data.products
-        DispatchQueue.main.async {
-            self?.reloadDataWithActivityIndicator(at: self?.productCollectionView)
-        }
-    }
-}
-
-// NetworkDataTransfer
-func fetchData<T: Codable>(api: APIProtocol,
-                           decodingType: T.Type,
-                           completionHandler: @escaping ((_ data: T) -> Void)) {
-    request(api: api) { result in
-        switch result {
-        case .success(let data):
-            let decodedData = JSONParser<T>().decode(from: data)
-
-            switch decodedData {
-            case .success(let data):
-                completionHandler(data)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-
-        case .failure(let error):
-            print(error.localizedDescription)
-        }
-    }
-}
-```
