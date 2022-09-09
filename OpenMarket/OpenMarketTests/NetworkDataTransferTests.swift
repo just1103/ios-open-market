@@ -1,12 +1,12 @@
 import XCTest
 @testable import OpenMarket
 
-class NetworkDataTransferTests: XCTestCase {
-    var sut: NetworkDataTransfer!
+class NetworkProviderTests: XCTestCase {
+    var sut: NetworkProvider!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = NetworkDataTransfer()
+        sut = NetworkProvider()
     }
     
     override func tearDownWithError() throws {
@@ -31,22 +31,23 @@ class NetworkDataTransferTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
-    func test_getProductDetail가_정상작동_하는지() {
-        let expectation = XCTestExpectation(description: "getProductDetail 비동기 테스트")
-
-        sut.request(api: ProductDetailAPI(id: 2)) { result in
-            switch result {
-            case .success(let data):
-                let product = try? JSONParser<Product>().decode(from: data).get()
-                XCTAssertEqual(product?.id, 2)
-                XCTAssertEqual(product?.name, "팥빙수")
-            case .failure(_):
-                XCTFail()
-            }
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 10.0)
-    }
+    // 서버 과부하 방지로 초기 데이터가 수시로 삭제됨
+//    func test_getProductDetail가_정상작동_하는지() {
+//        let expectation = XCTestExpectation(description: "getProductDetail 비동기 테스트")
+//
+//        sut.request(api: ProductDetailAPI(id: 2)) { result in
+//            switch result {
+//            case .success(let data):
+//                let product = try? JSONParser<Product>().decode(from: data).get()
+//                XCTAssertEqual(product?.id, 2)
+//                XCTAssertEqual(product?.name, "팥빙수")
+//            case .failure(_):
+//                XCTFail()
+//            }
+//            expectation.fulfill()
+//        }
+//        wait(for: [expectation], timeout: 10.0)
+//    }
 
     func test_getProductPage가_정상작동_하는지() {
         let expectation = XCTestExpectation(description: "getProductPage 비동기 테스트")
@@ -99,7 +100,7 @@ class NetworkDataTransferTests: XCTestCase {
 
     func test_MockURLSession의_StatusCode가_200번일때_정상동작_하는지() {
         let mockSession = MockURLSession(isRequestSuccess: true)
-        sut = NetworkDataTransfer(session: mockSession)
+        sut = NetworkProvider(session: mockSession)
 
         let expectation = XCTestExpectation(description: "MockURLSession의 getHealthChecker 비동기 테스트")
 
@@ -119,7 +120,7 @@ class NetworkDataTransferTests: XCTestCase {
 
     func test_MockURLSession의_StatusCode가_200번이_아닐때_실패하는지() {
         let mockSession = MockURLSession(isRequestSuccess: false)
-        sut = NetworkDataTransfer(session: mockSession)
+        sut = NetworkProvider(session: mockSession)
 
         let expectation = XCTestExpectation(description: "MockURLSession의 getHealthChecker 비동기 테스트")
 

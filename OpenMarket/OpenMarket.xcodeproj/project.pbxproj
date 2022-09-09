@@ -13,7 +13,7 @@
 		08A4E45D2792B90D000C9AD9 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4E45C2792B90D000C9AD9 /* Double+Extension.swift */; };
 		08A5B0D427843617002E1ABE /* MockProduct.json in Resources */ = {isa = PBXBuildFile; fileRef = 08A5B0D327843617002E1ABE /* MockProduct.json */; };
 		08A5B0D62784362C002E1ABE /* MockProductPage.json in Resources */ = {isa = PBXBuildFile; fileRef = 08A5B0D52784362C002E1ABE /* MockProductPage.json */; };
-		08A5B0D8278589C2002E1ABE /* NetworkDataTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A5B0D7278589C2002E1ABE /* NetworkDataTransfer.swift */; };
+		08A5B0D8278589C2002E1ABE /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A5B0D7278589C2002E1ABE /* NetworkProvider.swift */; };
 		08A5B0DC27859A4A002E1ABE /* URLRequest+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A5B0DB27859A4A002E1ABE /* URLRequest+Extension.swift */; };
 		08A5B0DE27859DBD002E1ABE /* OpenMarketURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A5B0DD27859DBD002E1ABE /* OpenMarketURL.swift */; };
 		08AC5E3827A3D33E00214265 /* ProductDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AC5E3727A3D33E00214265 /* ProductDetailDataSource.swift */; };
@@ -87,7 +87,7 @@
 		08A4E45C2792B90D000C9AD9 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		08A5B0D327843617002E1ABE /* MockProduct.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockProduct.json; sourceTree = "<group>"; };
 		08A5B0D52784362C002E1ABE /* MockProductPage.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockProductPage.json; sourceTree = "<group>"; };
-		08A5B0D7278589C2002E1ABE /* NetworkDataTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataTransfer.swift; sourceTree = "<group>"; };
+		08A5B0D7278589C2002E1ABE /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		08A5B0DB27859A4A002E1ABE /* URLRequest+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Extension.swift"; sourceTree = "<group>"; };
 		08A5B0DD27859DBD002E1ABE /* OpenMarketURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMarketURL.swift; sourceTree = "<group>"; };
 		08AC5E3727A3D33E00214265 /* ProductDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailDataSource.swift; sourceTree = "<group>"; };
@@ -313,7 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				369126282782EAC1002304D4 /* JSONParser.swift */,
-				08A5B0D7278589C2002E1ABE /* NetworkDataTransfer.swift */,
+				08A5B0D7278589C2002E1ABE /* NetworkProvider.swift */,
 				08BB9A7D27915BE800D95A82 /* ImageCacheManager.swift */,
 				082CD25C2799859B000AC366 /* MultipartFormData.swift */,
 				36D213ED27A11677003C6A77 /* AlertFactory.swift */,
@@ -593,7 +593,7 @@
 				08C21ED2279EBC2100D704CF /* ProductListStackView.swift in Sources */,
 				36D617C6279942E600F7A9AB /* ProductImageCollectionView.swift in Sources */,
 				3637AE292790287E009003B7 /* ProductRegisterViewController.swift in Sources */,
-				08A5B0D8278589C2002E1ABE /* NetworkDataTransfer.swift in Sources */,
+				08A5B0D8278589C2002E1ABE /* NetworkProvider.swift in Sources */,
 				36D213FC27A3CF3E003C6A77 /* ProductImage.swift in Sources */,
 				36D213A6279AB2DA003C6A77 /* UserInputChecker.swift in Sources */,
 				36D617C02797E6BD00F7A9AB /* ProductPlaceholder.swift in Sources */,

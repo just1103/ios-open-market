@@ -16,7 +16,7 @@ final class ProductDetailDataSource: NSObject {
             return
         }
         
-        NetworkDataTransfer().fetchData(api: ProductDetailAPI(id: productId),
+        NetworkProvider().fetchData(api: ProductDetailAPI(id: productId),
                                         decodingType: DetailViewProduct.self) { [weak self] data in
             self?.productDetail = data
             self?.delegate?.productDetailDataSource(didFetchProduct: self?.productDetail)

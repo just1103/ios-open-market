@@ -81,7 +81,7 @@ final class ProductRegisterDataSource: NSObject {
         multipartFormData.closeBody()
         
         let postAPI = ProductRegisterAPI(boundary: multipartFormData.boundary, body: multipartFormData.body)
-        NetworkDataTransfer().request(api: postAPI) { [weak self] result in
+        NetworkProvider().request(api: postAPI) { [weak self] result in
             switch result {
             case .success(_):
                 self?.delegate?.productRegisterDataSourceCompletedPost()

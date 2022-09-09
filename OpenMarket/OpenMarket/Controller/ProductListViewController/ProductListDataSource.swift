@@ -49,7 +49,7 @@ final class ProductListDataSource: NSObject {
     }
     
     func setupProducts() {
-        NetworkDataTransfer().fetchData(api: ProductPageAPI(pageNumber: 1, itemsPerPage: 100),
+        NetworkProvider().fetchData(api: ProductPageAPI(pageNumber: 1, itemsPerPage: 100),
                                         decodingType: ProductPage.self) { [weak self] data in
             let firstIndex = 0
             self?.products = data.products
@@ -67,7 +67,7 @@ final class ProductListDataSource: NSObject {
     }
     
     @objc private func checkNewProduct() {
-        NetworkDataTransfer().fetchData(api: ProductPageAPI(pageNumber: 1, itemsPerPage: 100),
+        NetworkProvider().fetchData(api: ProductPageAPI(pageNumber: 1, itemsPerPage: 100),
                                         decodingType: ProductPage.self) { [weak self] data in
             let firstIndex = 0
             let latestProductID = data.products[firstIndex].id
