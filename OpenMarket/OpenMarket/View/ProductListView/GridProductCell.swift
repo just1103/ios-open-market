@@ -25,6 +25,15 @@ final class GridProductCell: UICollectionViewCell, ProductCellProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        productThumbnailView.image = nil
+        nameLabel.text = nil
+        priceLabel.text = nil
+        bargainPriceLabel.text = nil
+        stockLabel.text = nil
+    }
+    
     private func setupBorderLine() {
         layer.borderColor = UIColor.systemGray.cgColor
         layer.cornerRadius = 10

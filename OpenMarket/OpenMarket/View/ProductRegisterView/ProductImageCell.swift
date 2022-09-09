@@ -18,6 +18,11 @@ final class ProductImageCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+    }
+    
     private func setup() {
         contentView.addSubview(imageView)
         contentView.addSubview(editButton)

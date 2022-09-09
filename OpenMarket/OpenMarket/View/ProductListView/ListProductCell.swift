@@ -27,6 +27,15 @@ final class ListProductCell: UICollectionViewCell, ProductCellProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        productThumbnailView.image = nil
+        nameLabel.text = nil
+        priceLabel.text = nil
+        bargainPriceLabel.text = nil
+        stockLabel.text = nil
+    }
+    
     private func setupUnderLine() {
         let inset: CGFloat = 10
         let underLine = layer.addBorder([.bottom], color: UIColor.systemGray, width: 0.5)
