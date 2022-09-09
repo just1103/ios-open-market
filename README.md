@@ -20,6 +20,17 @@
 |<img width="180" src="https://user-images.githubusercontent.com/70856586/189278678-8d333322-43b3-4409-8405-5738cd062655.gif">|<img width="180" src="https://user-images.githubusercontent.com/70856586/189278403-f49ac43c-ee21-4cfd-a39e-e5f47aa6d815.gif">|<img width="180" src="https://user-images.githubusercontent.com/70856586/189279165-6999c4e2-013f-47ef-98ea-525429370620.gif">
 |
 
+### 🛍️ 상품 등록화면
+> * `+ 버튼`으로 이미지를 추가하고, 이미지 우상단의 `- 버튼`으로 이미지를 삭제해요.  
+> * 이미지를 추가 시 맨 오른쪽으로 Scroll하고, 5개가 되면 `+버튼`이 사라져요.
+> * 이미지 크기가 큰 경우 300KB로 축소하여 등록합니다.  
+> * 입력값이 적절한지 검증하고 필요 시 `Alert`를 나타내요.  
+> * `TextView` 입력 텍스트가 키보드 뒤로 숨겨지지 않도록 처리했어요.  
+
+|이미지 추가|이미지 수정/삭제|상품 등록 실패|상품 등록 성공|키보드 입력 처리|
+|-|-|-|-|-|
+|<img width="180" src="https://user-images.githubusercontent.com/70856586/189329614-6a1526c1-45c1-478e-b6b4-bce99222100c.gif">|<img width="180" src="https://i.imgur.com/QoqzYq6.gif">|<img width="180" src="https://i.imgur.com/pcxnzgE.gif">|<img width="180" src="https://i.imgur.com/k1mBXL0.gif">|<img width="180" src="https://i.imgur.com/0Llsy78.gif">|
+
 ### 🛍️ 상품 상세화면
 > * 목록화면의 상품을 탭하면 상세화면을 나타냅니다.  
 > * 이미지를 좌우로 Scroll 가능해요.
@@ -28,17 +39,6 @@
 |상세 화면|
 |-|
 |<img width="180" src="https://user-images.githubusercontent.com/70856586/189276763-b96e1498-6b6b-45f6-a9c6-d3d857ab7753.gif">|
-
-### 🛍️ 상품 등록화면
-> * `+ 버튼`으로 이미지를 추가하고, 이미지 우상단의 `- 버튼`으로 이미지를 삭제해요.  
-> * 이미지 크기가 큰 경우 300KB로 축소하여 등록합니다.  
-> * 이미지를 추가 시 맨 오른쪽으로 Scroll 해요.
-> * 입력값이 적절한지 검증하고 필요 시 `Alert`를 나타내요.  
-> * `TextView` 입력 텍스트가 키보드 뒤로 숨겨지지 않도록 처리했어요.  
-
-|이미지 추가|이미지 수정/삭제|상품 등록 실패|상품 등록 성공|키보드 입력 처리|
-|-|-|-|-|-|
-|<img width="180" src="https://i.imgur.com/KsqBnFP.gif">|<img width="180" src="https://i.imgur.com/QoqzYq6.gif">|<img width="180" src="https://i.imgur.com/pcxnzgE.gif">|<img width="180" src="https://i.imgur.com/k1mBXL0.gif">|<img width="180" src="https://i.imgur.com/0Llsy78.gif">|
 
 ## STEP별 학습내용 
 - [STEP1 : 모델/네트워킹 타입 구현](##STEP1-모델/네트워킹-타입-구현)
