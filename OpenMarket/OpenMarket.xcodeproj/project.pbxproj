@@ -220,10 +220,10 @@
 			isa = PBXGroup;
 			children = (
 				08C21ED1279EBC2100D704CF /* ProductListStackView.swift */,
+				08AF0B5A278D6227005FF21D /* LayoutKindSegmentedControl.swift */,
+				08CA13EE279588E6005552A9 /* ProductsCollectionView.swift */,
 				3637AE1E278D8801009003B7 /* GridProductCell.swift */,
 				08AF0B5C278EB4DC005FF21D /* ListProductCell.swift */,
-				08CA13EE279588E6005552A9 /* ProductsCollectionView.swift */,
-				08AF0B5A278D6227005FF21D /* LayoutKindSegmentedControl.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -232,10 +232,10 @@
 			isa = PBXGroup;
 			children = (
 				36D617B62796C70000F7A9AB /* ProductManagementScrollView.swift */,
-				08BC39892796E7AA002B5C7C /* RoundedRectTextField.swift */,
+				36D617C5279942E600F7A9AB /* ProductImageCollectionView.swift */,
 				0893F0C32797EB7A00457C61 /* ProductImageCell.swift */,
 				36D617C32798299700F7A9AB /* ProductRegisterImageFooterView.swift */,
-				36D617C5279942E600F7A9AB /* ProductImageCollectionView.swift */,
+				08BC39892796E7AA002B5C7C /* RoundedRectTextField.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
