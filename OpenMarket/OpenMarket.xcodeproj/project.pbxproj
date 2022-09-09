@@ -276,7 +276,6 @@
 				08B2CE8A2782DEAD009295F2 /* Product.swift */,
 				08B2CE8C2782E0D4009295F2 /* Currency.swift */,
 				08B2CE8E2782E7B1009295F2 /* ProductPage.swift */,
-				08A5B0DD27859DBD002E1ABE /* OpenMarketURL.swift */,
 				36D617BF2797E6BD00F7A9AB /* ProductPlaceholder.swift */,
 				36D617C72799B3DF00F7A9AB /* ProductDetailToRegister.swift */,
 				36D213A5279AB2DA003C6A77 /* UserInputChecker.swift */,
@@ -311,10 +310,7 @@
 		369126272782EA85002304D4 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				369126282782EAC1002304D4 /* JSONParser.swift */,
-				08A5B0D7278589C2002E1ABE /* NetworkProvider.swift */,
 				08BB9A7D27915BE800D95A82 /* ImageCacheManager.swift */,
-				082CD25C2799859B000AC366 /* MultipartFormData.swift */,
 				36D213ED27A11677003C6A77 /* AlertFactory.swift */,
 			);
 			path = Utility;
@@ -336,6 +332,17 @@
 				C70FB10325BEF61D00C9924E /* Assets.xcassets */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		36C41C1B28CB1B57006BC3B2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				08A5B0D7278589C2002E1ABE /* NetworkProvider.swift */,
+				082CD25C2799859B000AC366 /* MultipartFormData.swift */,
+				369126282782EAC1002304D4 /* JSONParser.swift */,
+				08A5B0DD27859DBD002E1ABE /* OpenMarketURL.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		36D213F327A38062003C6A77 /* Detail */ = {
@@ -401,6 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				36C41C1828CB1A99006BC3B2 /* App */,
+				36C41C1B28CB1B57006BC3B2 /* Network */,
 				369126202782D3A0002304D4 /* Model */,
 				369126212782D3AC002304D4 /* View */,
 				369126222782D3B1002304D4 /* Controller */,
